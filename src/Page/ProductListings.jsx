@@ -2,8 +2,9 @@ import Footer from "../component/Footer";
 import ProductCard from "../component/ProductCard";
 import Filter from "../component/FIlter";
 import MobFilter from "../component/MobFilter";
-import { productData } from "../component/product-data";
 import { NavLink } from "react-router-dom";
+import { useContext } from "react";
+import { ProductContext } from "../component/context/ProductContext";
 
 
 export default function ProductListingsPage () {
@@ -34,22 +35,23 @@ function MainContent () {
 
 function ProductList () {
 
-    const productList = productData.products;
+    const {prodData} = useContext(ProductContext);
 
 
     return (
         <div className="product-list">
-            {productList.map(prod => (
-                <NavLink to={`/products/${prod.id}`}>
+            {prodData.map(prod => (
+                // <NavLink to={`/products/${prod.id}`}>
                     <ProductCard
                         key={prod.id}
+                        id = {prod.id}
                         type={prod.type === 'Sofas' ? 'big' : ''}
                         name={prod.name}
                         imgUrl={prod.image}
                         price={prod.price}
 
                     />
-                </NavLink>
+                // </NavLink>
             ))}
         </div>
     );

@@ -1,10 +1,13 @@
+import { NavLink } from "react-router-dom";
+import { useContext } from "react";
+import { ProductContext } from "../component/context/ProductContext";
+
 import Button from "../component/Button";
 import Features from "../component/Features";
 import ProductCard from "../component/ProductCard";
 import JoinClubPage from "../component/JoinClubPage";
 import Footer from "../component/Footer";
 import Listings from "../component/Listings";
-import { NavLink } from "react-router-dom";
 
 export default function HomePage() {
     return (
@@ -16,53 +19,32 @@ export default function HomePage() {
 }
 
 function MainContent () {
+
+    const {prodData} = useContext(ProductContext)
+
     return (
         <main>
             <Hero/>
             <Features/>
             <Listings title='New Product'>
-                <ProductCard
-                    name='The Dandy chair'
-                    imgUrl='img/product/chair/product_1.jpg'
-                    price='250'
-                />
-                <ProductCard
-                    name='Rustic Vase Set'
-                    imgUrl='img/product/chair/product_1.jpg'
-                    price='155'
-                />
-                <ProductCard
-                    imgUrl='img/product/chair/product_1.jpg'
-                    name='The Silky Vase'
-                    price='125'
-                />
-                <ProductCard
-                    imgUrl='img/product/chair/product_1.jpg'
-                    name='The Lucy Lamp'
-                    price='399'
-                />
+                {prodData.slice(0, 4).map((prodItem) => (
+                    <ProductCard
+                        key={prodItem.id}
+                        name={prodItem.name}
+                        imgUrl={prodItem.image}
+                        price={prodItem.price}
+                    />
+                ))}
             </Listings>
             <Listings title='Most Popular'>
-                <ProductCard
-                    name='The Poplar suede sofa'
-                    imgUrl='img/product/chair/product_1.jpg'
-                    price='980'
-                />
-                <ProductCard
-                    name='The Dandy chair'
-                    imgUrl='img/product/chair/product_1.jpg'
-                    price='250'
-                />
-                <ProductCard
-                    name='The Dandy chair'
-                    imgUrl='img/product/chair/product_1.jpg'
-                    price='250'
-                />
-                <ProductCard
-                    name='The Dandy chair'
-                    imgUrl='img/product/chair/product_1.jpg'
-                    price='250'
-                />
+                {prodData.slice(4, 8).map((prodItem) => (
+                    <ProductCard
+                        key={prodItem.id}
+                        name={prodItem.name}
+                        imgUrl={prodItem.image}
+                        price={prodItem.price}
+                    />
+                ))}
             </Listings>
             <JoinClubPage/>
             <Features type='split-right'/>

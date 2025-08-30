@@ -2,7 +2,7 @@ import { createContext, useState } from "react";
 import { productData } from "../product-data";
 
 export const ProductContext = createContext({
-    productData: productData.products
+    prodData: productData.products
 })
 
 function ProductProvider ({children}) {

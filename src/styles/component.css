@@ -533,7 +533,7 @@ input[type='submit'] {
 
 /* Product Card */
 
-.product-card {
+.product-card a{
     display: flex;
     flex-direction: column;
     gap: 24px;

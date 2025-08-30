@@ -1,6 +1,7 @@
+import { NavLink } from "react-router-dom";
 import Stepper from "./Stepper";
 
-export default function ProductCard ({type, name, imgUrl, price}) {
+export default function ProductCard ({id, type, name, imgUrl, price}) {
 
     let maxWidth;
     let spanCollum;
@@ -21,11 +22,13 @@ export default function ProductCard ({type, name, imgUrl, price}) {
 
     return (
             <div className="product-card" style={{maxWidth: `${maxWidth}px`, gridColumn: `span ${spanCollum}`}}>
-                <img src={imgUrl} alt="ProductCard.jpg"/>
-                <div>
-                    <h4>{name}</h4>
-                    <p className="body-large-txt">£{price}</p>
-                </div>
+                <NavLink to={`/products/${id}`}>
+                    <img src={imgUrl} alt="ProductCard.jpg"/>
+                    <div>
+                        <h4>{name}</h4>
+                        <p className="body-large-txt">£{price}</p>
+                    </div>
+                </NavLink>
             </div>
     );
 }
