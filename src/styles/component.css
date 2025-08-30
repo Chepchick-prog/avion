@@ -54,7 +54,9 @@
     gap: 44px;
 }
 
-
+.links-list li:hover {
+    color: var(--primary-color);
+}
 
 /* Mobile Side Bar */
 
@@ -232,14 +234,38 @@ button :first-child {
 
 /* Input */
 
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 1000px rgba(0, 0, 0, 0) inset !important;
+    transition: background-color 5000s ease-in-out 0s;
+}
+
+.primary-input input:-webkit-autofill,
+.primary-input input:-webkit-autofill:hover, 
+.primary-input input:-webkit-autofill:focus,
+.primary-input input:-webkit-autofill:active {
+    -webkit-text-fill-color: var(--dark-primary-color) !important;
+}
+
+.opaque-input input:-webkit-autofill,
+.opaque-input input:-webkit-autofill:hover, 
+.opaque-input input:-webkit-autofill:focus,
+.opaque-input input:-webkit-autofill:active {
+    -webkit-text-fill-color: var(--white-color) !important;
+}
+
 form {
     display: flex;
     width: 100%;
 }
 
 input {
+    outline: none;
     font-family: var(--main-font);
 }
+
 
 input[type='email'] {    
     height: 100%;
@@ -424,6 +450,7 @@ input[type='submit'] {
 }
 
 .dropdown-item {
+    cursor: pointer;
     display: flex;
     align-items: center;
     gap: 12px;
@@ -489,7 +516,7 @@ input[type='submit'] {
     flex-direction: column;
     justify-content: space-between;
 
-    /* gap: 196px; */
+    gap: 65px;
 
     margin: 72px 100px 54px 84px;
 }
@@ -684,6 +711,11 @@ footer {
     display: grid;
     gap: 12px;
     width: 100%;
+}
+
+.footer-nav-list p:hover {
+    cursor: pointer;
+    color: var(--border-dark-color);
 }
 
 .footer-line {

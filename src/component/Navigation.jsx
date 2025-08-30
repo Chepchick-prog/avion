@@ -15,8 +15,13 @@ export default function Navigation () {
                             <NavLink to="/about">
                                 <span className="body-medium-txt">About us</span>
                             </NavLink>
-                            <span className="body-medium-txt">Contact</span>
-                            <span className="body-medium-txt">Blog</span>
+                            <NavLink>
+                                <span className="body-medium-txt">Contact</span>
+                            </NavLink>
+                            <NavLink>
+                                <span className="body-medium-txt">Blog</span>
+                            </NavLink>
+                            
                         </div>
                         <div className="right-actions">
                             <img src="img/icon/Search.svg" alt="Search-icon.svg"/>
@@ -34,13 +39,27 @@ export default function Navigation () {
                         <NavLink to='/products'>
                             <li className="links-item">All products</li>
                         </NavLink>
-                        <li className="links-item"><span>Plant pots</span></li>
-                        <li className="links-item"><span>Ceramics</span></li>
-                        <li className="links-item"><span>Tables</span></li>
-                        <li className="links-item"><span>Chairs</span></li>
-                        <li className="links-item"><span>Crockery</span></li>
-                        <li className="links-item"><span>Tableware</span></li>
-                        <li className="links-item"><span>Cutlery</span></li>
+                        <NavLink to='/products'>
+                            <li className="links-item">Plant pots</li>
+                        </NavLink>
+                        <NavLink to='/products'>
+                            <li className="links-item">Ceramics</li>
+                        </NavLink>
+                        <NavLink to='/products'>
+                            <li className="links-item">Tables</li>
+                        </NavLink>
+                        <NavLink to='/products'>
+                            <li className="links-item">Chairs</li>
+                        </NavLink>
+                        <NavLink to='/products'>
+                            <li className="links-item">Crockery</li>
+                        </NavLink>
+                        <NavLink to='/products'>
+                            <li className="links-item">Tableware</li>
+                        </NavLink>
+                        <NavLink to='/products'>
+                            <li className="links-item">Cutlery</li>
+                        </NavLink>
                     </ul>
                 </nav>
             </div>

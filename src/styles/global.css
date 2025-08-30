@@ -153,6 +153,11 @@ h6 {
     margin-bottom: 56px;
 }
 
+.listings-content {
+    display: grid;
+    justify-items: center;
+}
+
 .listings + .listings {
     margin-top: 64px;
     margin-bottom: 48px;
@@ -525,6 +530,10 @@ h6 {
     .listings + .listings {
         margin-top: 48px;
         margin-bottom: 38px;
+    }
+
+    .listings-content :last-child {
+        width: 100%;
     }
 
     .listings h2 {

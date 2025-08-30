@@ -4,6 +4,7 @@ import ProductCard from "../component/ProductCard";
 import JoinClubPage from "../component/JoinClubPage";
 import Footer from "../component/Footer";
 import Listings from "../component/Listings";
+import { NavLink } from "react-router-dom";
 
 export default function HomePage() {
     return (
@@ -43,10 +44,14 @@ function MainContent () {
             </Listings>
             <Listings title='Most Popular'>
                 <ProductCard
-                    type='big'
                     name='The Poplar suede sofa'
                     imgUrl='img/product/chair/product_1.jpg'
                     price='980'
+                />
+                <ProductCard
+                    name='The Dandy chair'
+                    imgUrl='img/product/chair/product_1.jpg'
+                    price='250'
                 />
                 <ProductCard
                     name='The Dandy chair'
@@ -70,7 +75,9 @@ function Hero() {
         <section className='hero hero-container'>
             <div className='hero-right'>
                 <h2>The furniture brand for the future, with timeless designs</h2>
-                <Button type='opaque' name='View collection'/>
+                <NavLink to='/products'>
+                    <Button type='opaque' name='View collection'/>
+                </NavLink>
                 <p className='body-large-txt'>A new era in eco friendly furniture with Avelon, the French luxury retail brand with nice fonts, tasteful colors and a beautiful way to display things digitally using modern web technologies.</p>
             </div>
             <img 

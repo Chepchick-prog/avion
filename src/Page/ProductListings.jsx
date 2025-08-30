@@ -1,10 +1,9 @@
-import { useState } from "react";
-
 import Footer from "../component/Footer";
 import ProductCard from "../component/ProductCard";
 import Filter from "../component/FIlter";
 import MobFilter from "../component/MobFilter";
 import { productData } from "../component/product-data";
+import { NavLink } from "react-router-dom";
 
 
 export default function ProductListingsPage () {
@@ -35,21 +34,22 @@ function MainContent () {
 
 function ProductList () {
 
-    const [productList, setProductList] = useState(productData.products)
+    const productList = productData.products;
 
 
     return (
         <div className="product-list">
-
             {productList.map(prod => (
-                <ProductCard
-                    key={prod.id}
-                    type={prod.type === 'Sofas' ? 'big' : ''}
-                    name={prod.name}
-                    imgUrl={prod.image}
-                    price={prod.price}
+                <NavLink to={`/products/${prod.id}`}>
+                    <ProductCard
+                        key={prod.id}
+                        type={prod.type === 'Sofas' ? 'big' : ''}
+                        name={prod.name}
+                        imgUrl={prod.image}
+                        price={prod.price}
 
-                />
+                    />
+                </NavLink>
             ))}
         </div>
     );

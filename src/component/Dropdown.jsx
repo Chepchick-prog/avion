@@ -4,14 +4,14 @@ export default function Dropdown ({ type, name, menu }) {
 
     switch(type) {
         case 'single' :
-            return <SingleDropdown name={name} menu={menu}/>
+            return <SingleDropdown menu={menu}/>
         default :
             return <MultiDropdown name={name} menu={menu}/>
 
     }
 }
 
-function SingleDropdown ({name, menu}) {
+function SingleDropdown ({menu}) {
     const [open, setOpen] = useState(false)
     const [selected, setSelected] = useState(menu[1])
 
@@ -23,7 +23,7 @@ function SingleDropdown ({name, menu}) {
             <button
                 className='dropdown mob-dropdown'
                 onClick={() => {setOpen(!open)}}
-            >
+                >
                 <span className="body-medium-txt">{selected}</span>
                 <img src={`img/icon/Caret--${open ? 'up' : 'down'}.svg`} alt="ProductCard.jpg"/>
             </button>
@@ -34,7 +34,7 @@ function SingleDropdown ({name, menu}) {
                         className="dropdown-item"
                         onClick={() => {
                             setOpen(false);
-                            setSelected(menu)
+                            setSelected(menuItem)
                         }}>
                         {menuItem}
                     </li>

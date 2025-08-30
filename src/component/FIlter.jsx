@@ -74,7 +74,6 @@ function FilterSorting () {
             <span className="body-small-txt">Sorting by:</span>
             <Dropdown 
                 type='single'
-                name='Brand'
                 menu={[
                     'By popularity',
                     'By rating',

@@ -28,7 +28,7 @@ function FooterSingUp () {
                     <li><p>Chairs</p></li>
                 </FooterNavList>
                 <FooterNavList name='Our company'>
-                    <li><p >About us</p></li>
+                    <li><p>About us</p></li>
                     <li><p>Vacansies</p></li>
                     <li><p>Contact us</p></li>
                     <li><p>Privacy</p></li>

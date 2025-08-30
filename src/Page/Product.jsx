@@ -7,6 +7,7 @@ import Button from "../component/Button";
 import Stepper from "../component/Stepper";
 
 export default function ProductPage () {
+
     return (
         <>
             <MainContent/>

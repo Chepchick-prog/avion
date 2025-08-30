@@ -20,13 +20,13 @@ export default function ProductCard ({type, name, imgUrl, price}) {
     }
 
     return (
-        <div className="product-card" style={{maxWidth: `${maxWidth}px`, gridColumn: `span ${spanCollum}`}}>
-            <img src={imgUrl} alt="ProductCard.jpg"/>
-            <div>
-                <h4>{name}</h4>
-                <p className="body-large-txt">£{price}</p>
+            <div className="product-card" style={{maxWidth: `${maxWidth}px`, gridColumn: `span ${spanCollum}`}}>
+                <img src={imgUrl} alt="ProductCard.jpg"/>
+                <div>
+                    <h4>{name}</h4>
+                    <p className="body-large-txt">£{price}</p>
+                </div>
             </div>
-        </div>
     );
 }
 
