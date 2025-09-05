@@ -2,7 +2,6 @@ import Footer from "../component/Footer";
 import ProductCard from "../component/ProductCard";
 import Filter from "../component/FIlter";
 import MobFilter from "../component/MobFilter";
-import { NavLink } from "react-router-dom";
 import { useContext } from "react";
 import { ProductContext } from "../component/context/ProductContext";
 
