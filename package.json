@@ -1,6 +1,7 @@
 {
   "name": "avion",
   "version": "0.1.0",
+  "homepage": "https://chepchick-prog.github.io/avion/",
   "private": true,
   "dependencies": {
     "@testing-library/dom": "^10.4.0",
