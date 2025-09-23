@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { ProductContext } from "../component/context/ProductContext";
 
@@ -53,18 +53,28 @@ function MainContent () {
 }
 
 function Hero() {
+
+    const navigate = useNavigate()
+
+    const handleClick = () => {
+        navigate('/products')
+    }
+
     return (
         <section className='hero hero-container'>
             <div className='hero-right'>
                 <h2>The furniture brand for the future, with timeless designs</h2>
-                <NavLink to='/products'>
-                    <Button type='opaque' name='View collection'/>
-                </NavLink>
+                <Button
+                    type='opaque'
+                    name='View collection'
+                    onClick={handleClick}
+                    
+                />
                 <p className='body-large-txt'>A new era in eco friendly furniture with Avelon, the French luxury retail brand with nice fonts, tasteful colors and a beautiful way to display things digitally using modern web technologies.</p>
             </div>
             <img 
                 className='hero-left' 
-                src="img/hero-chair.jpg" 
+                src="/img/hero-chair.jpg" 
                 alt="hero-chair.jpg"
             />
         </section>

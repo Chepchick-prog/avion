@@ -2,7 +2,6 @@ import Footer from "../component/Footer";
 import ProductCard from "../component/ProductCard";
 import Filter from "../component/FIlter";
 import MobFilter from "../component/MobFilter";
-import { NavLink } from "react-router-dom";
 import { useContext } from "react";
 import { ProductContext } from "../component/context/ProductContext";
 
@@ -41,7 +40,6 @@ function ProductList () {
     return (
         <div className="product-list">
             {prodData.map(prod => (
-                // <NavLink to={`/products/${prod.id}`}>
                     <ProductCard
                         key={prod.id}
                         id = {prod.id}
@@ -51,7 +49,6 @@ function ProductList () {
                         price={prod.price}
 
                     />
-                // </NavLink>
             ))}
         </div>
     );

@@ -25,9 +25,9 @@ function SingleDropdown ({menu}) {
                 onClick={() => {setOpen(!open)}}
                 >
                 <span className="body-medium-txt">{selected}</span>
-                <img src={`img/icon/Caret--${open ? 'up' : 'down'}.svg`} alt="ProductCard.jpg"/>
+                <img src={`/img/icon/Caret--${open ? 'up' : 'down'}.svg`} alt="ProductCard.jpg"/>
             </button>
-            <ul className="dropdown-list" style={{display: `${open ? '' : 'none'}`}}>
+            <ul className="dropdown-list" style={{display: `${open ? 'unset' : 'none'}`}}>
                 {menu.map((menuItem, index) => (
                     <li
                         key={index}
@@ -57,7 +57,7 @@ function MultiDropdown ({name, menu}) {
             <button
                 className='dropdown mob-dropdown'>
                 <span className="body-medium-txt">{name}</span>
-                <img src={`img/icon/Caret--${open ? 'up' : 'down'}.svg`} alt="ProductCard.jpg"/>
+                <img src={`/img/icon/Caret--${open ? 'up' : 'down'}.svg`} alt="ProductCard.jpg"/>
             </button>
             <ul className="dropdown-list" style={{display: `${open ? '' : 'none'}`}}>
                 {menu.map((menuItem, index) => (

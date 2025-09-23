@@ -24,11 +24,11 @@ export default function Navigation () {
                             
                         </div>
                         <div className="right-actions">
-                            <img src="img/icon/Search.svg" alt="Search-icon.svg"/>
+                            <img src="/img/icon/Search.svg" alt="Search-icon.svg"/>
                             <NavLink to="/baskets">
-                                <img src="img/icon/Shopping--cart.svg" alt="Shopping-cart-icon.svg"/>
+                                <img src="/img/icon/Shopping--cart.svg" alt="Shopping-cart-icon.svg"/>
                             </NavLink>
-                            <img src="img/icon/User--avatar.svg" alt="User-avatar-icon.svg"/>
+                            <img src="/img/icon/User--avatar.svg" alt="User-avatar-icon.svg"/>
                         </div>
                     </div>
                     <SideBar/>

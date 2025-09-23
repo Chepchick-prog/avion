@@ -10,26 +10,11 @@ export default function Filter() {
                 <Dropdown 
                     name='Product type'
                     menu={[
-                        <>
-                            <CheckBox/>
-                            <span className="body-medium-txt">Furniture</span>
-                        </>,
-                        <>
-                            <CheckBox/>
-                            <span className="body-medium-txt">Homeware</span>
-                        </>,
-                        <>
-                            <CheckBox/>
-                            <span className="body-medium-txt">Sofas</span>
-                        </>,
-                        <>
-                            <CheckBox/>
-                            <span className="body-medium-txt">Light fittings</span>
-                        </>,
-                        <>
-                            <CheckBox/>
-                            <span className="body-medium-txt">Accessories</span>
-                        </>,
+                        <CheckBox name={'Furniture'}/>,
+                        <CheckBox name={'Homeware'}/>,
+                        <CheckBox name={'Sofas'}/>,
+                        <CheckBox name={'Light fittings'}/>,
+                        <CheckBox name={'Accessories'}/>,
                     ]}
                 />
                 <Dropdown 
@@ -41,22 +26,10 @@ export default function Filter() {
                 <Dropdown 
                     name='Brand'
                     menu={[
-                        <>
-                            <CheckBox/>
-                            <span className="body-medium-txt">Robert Smith</span>
-                        </>,
-                        <>
-                            <CheckBox/>
-                            <span className="body-medium-txt">Liam Gallagher</span>
-                        </>,
-                        <>
-                            <CheckBox/>
-                            <span className="body-medium-txt">Biggie Smalls</span>
-                        </>,
-                        <>
-                            <CheckBox/>
-                            <span className="body-medium-txt">Thom Yorke</span>
-                        </>,
+                        <CheckBox name={'Robert Smith'}/>,
+                        <CheckBox name={'Liam Gallagher'}/>,
+                        <CheckBox name={'Biggie Smalls'}/>,
+                        <CheckBox name={'Thom Yorke'}/>,
                     ]}
                 />        
             </div>

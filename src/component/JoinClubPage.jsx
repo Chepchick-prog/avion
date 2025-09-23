@@ -30,7 +30,7 @@ function SplitPage () {
     return (
         <section className='join-club join-club-split'>
             <img 
-                src="img/split-left-features.jpg"
+                src="/img/split-left-features.jpg"
                 alt="features.jpg"
             />
             <div className="join-club-split-info">
@@ -52,15 +52,15 @@ function ImagePage () {
                 <p className="body-medium-txt">Sign up for our newsletter and receive exclusive offers on new ranges, sales, pop up stores and more</p>
                 <ul className="join-club-benefits body-medium-txt">
                     <li>
-                        <img src='img/icon/Checkmark--filled.svg' alt="check-icon.svg"/>
+                        <img src='/img/icon/Checkmark--filled.svg' alt="check-icon.svg"/>
                         <span>Exclusive offers</span>
                     </li>
                     <li>
-                        <img src='img/icon/Checkmark--filled.svg' alt="check-icon.svg"/>
+                        <img src='/img/icon/Checkmark--filled.svg' alt="check-icon.svg"/>
                         <span>Free events</span>
                     </li>
                     <li>
-                        <img src='img/icon/Checkmark--filled.svg' alt="check-icon.svg"/>
+                        <img src='/img/icon/Checkmark--filled.svg' alt="check-icon.svg"/>
                         <span>Large discounts</span>
                     </li>
                 </ul>

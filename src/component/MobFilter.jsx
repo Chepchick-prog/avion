@@ -4,54 +4,27 @@ import Dropdown from "./Dropdown"
 export default function MobFilter () {
     return (
         <section className="mobile-product-filter">
-            <div>
                 <Dropdown 
                     name='Filters'
                     menu={[
-                        <>
-                            <CheckBox/>
-                            <span className="body-medium-txt">Furniture</span>
-                        </>,
-                        <>
-                            <CheckBox/>
-                            <span className="body-medium-txt">Homeware</span>
-                        </>,
-                        <>
-                            <CheckBox/>
-                            <span className="body-medium-txt">Sofas</span>
-                        </>,
-                        <>
-                            <CheckBox/>
-                            <span className="body-medium-txt">Light fittings</span>
-                        </>,
-                        <>
-                            <CheckBox/>
-                            <span className="body-medium-txt">Accessories</span>
-                        </>,
+                        <CheckBox name={'Furniture'}/>,
+                        <CheckBox name={'Homeware'}/>,
+                        <CheckBox name={'Sofas'}/>,
+                        <CheckBox name={'Light fittings'}/>,
+                        <CheckBox name={'Accessories'}/>,
                     ]}
                 />
                 <Dropdown 
                     type='single'
                     name='Sorting'
                     menu={[
-                        <>
-                            <span className="body-medium-txt">Furniture</span>
-                        </>,
-                        <>
-                            <span className="body-medium-txt">Homeware</span>
-                        </>,
-                        <>
-                            <span className="body-medium-txt">Sofas</span>
-                        </>,
-                        <>
-                            <span className="body-medium-txt">Light fittings</span>
-                        </>,
-                        <>
-                            <span className="body-medium-txt">Accessories</span>
-                        </>,
+                        'By popularity',
+                        'By rating',
+                        'By newest',
+                        'By price (low-hight)',
+                        'By price (hight-low)',
                     ]}
                 />
-            </div>
         </section>
     )
 }

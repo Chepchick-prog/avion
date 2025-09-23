@@ -1,4 +1,4 @@
-export default function Button ({type, name}) {
+export default function Button ({type, name, onClick}) {
 
     let styleBtn = ''
 
@@ -18,7 +18,7 @@ export default function Button ({type, name}) {
     }
 
     return (
-        <button className={styleBtn}>
+        <button className={styleBtn} onClick={onClick}>
             <span className="body-medium-txt">{name}</span>
         </button>
     )

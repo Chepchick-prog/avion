@@ -18,22 +18,22 @@ function Light () {
             <h3>What makes our brand different</h3>
             <div className='light-features-list'>
                 <FeaturesItem
-                    imgUrl='img/icon/Delivery.svg'
+                    imgUrl='/img/icon/Delivery.svg'
                     title='Next day as standard'
                     subtitle='Order before 3pm and get your order the next day as standard'
                 />
                 <FeaturesItem
-                    imgUrl='img/icon/Checkmark--outline.svg'
+                    imgUrl='/img/icon/Checkmark--outline.svg'
                     title='Made by true artisans'
                     subtitle='Handmade crafted goods made with real passion and craftmanship'
                 />
                 <FeaturesItem
-                    imgUrl='img/icon/Purchase.svg'
+                    imgUrl='/img/icon/Purchase.svg'
                     title='Unbeatable prices'
                     subtitle='For our materials and quality you won’t find better prices anywhere'
                 />
                 <FeaturesItem
-                    imgUrl='img/icon/Sprout.svg'
+                    imgUrl='/img/icon/Sprout.svg'
                     title='Recycled packaging'
                     subtitle='We use 100% recycled packaging to ensure our footprint is manageable'
                 />
@@ -68,7 +68,7 @@ function SplitRight () {
                 <Button type='secondary' name='Get in touch'/>
             </div>
             <img 
-                src="img/split-right-features.jpg"
+                src="/img/split-right-features.jpg"
                 alt="features.jpg"
             />
         </section>
@@ -79,7 +79,7 @@ function SplitLeft () {
     return (
         <section className='splitRight-features'>
             <img 
-                src="img/split-left-features.jpg"
+                src="/img/split-left-features.jpg"
                 alt="features.jpg"
             />
             <div className="split-features-info">

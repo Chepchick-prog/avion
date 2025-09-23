@@ -16,13 +16,13 @@ export default function SideBar () {
                     className="side-bttn"
                     onClick={() => {setIsOpen(!isOpen)}}
                 >
-                    <img src="img/icon/Search.svg" alt="Search-icon.svg"/>
+                    <img src="/img/icon/Search.svg" alt="Search-icon.svg"/>
                 </button>
                 <button 
                     className="side-bttn"
                     onClick={() => {setIsOpen(!isOpen); setIsNav(!isNav)}}
                 >
-                    <img src="img/icon/Menu.svg" alt="Menu-icon.svg"/>
+                    <img src="/img/icon/Menu.svg" alt="Menu-icon.svg"/>
                 </button>
             </div>
             <div  

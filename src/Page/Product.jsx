@@ -1,3 +1,5 @@
+import { useContext } from "react";
+import { ProductContext } from "../component/context/ProductContext";
 import Features from "../component/Features";
 import JoinClubPage from "../component/JoinClubPage";
 import Footer from "../component/Footer";
@@ -5,6 +7,8 @@ import ProductCard from "../component/ProductCard";
 import Listings from "../component/Listings";
 import Button from "../component/Button";
 import Stepper from "../component/Stepper";
+import { useParams } from "react-router-dom";
+
 
 export default function ProductPage () {
 
@@ -17,26 +21,23 @@ export default function ProductPage () {
 }
 
 function MainContent () {
+
+    const {prodData} = useContext(ProductContext);
+
     return (
         <main>
             <ProdDetails/>
             <Listings title='You might also like'>
-                <ProductCard
-                    type='big'
-                    name='The Poplar suede sofa'
-                    imgUrl='img/product/product_6.jpg'
-                    price='980'
-                />
-                <ProductCard
-                    name='The Dandy chair'
-                    imgUrl='img/product/product_1.jpg'
-                    price='250'
-                />
-                <ProductCard
-                    name='The Dandy chair'
-                    imgUrl='img/product/product_5.jpg'
-                    price='250'
-                />
+                {prodData.slice(0, 4).map(prod => (
+                    <ProductCard
+                        key={prod.id}
+                        id = {prod.id}
+                        type={prod.type === 'Sofas' ? 'big' : ''}
+                        name={prod.name}
+                        imgUrl={prod.image}
+                        price={prod.price}
+                    />
+                ))}
             </Listings>
             <Features/>
             <JoinClubPage type='split'/>
@@ -45,39 +46,56 @@ function MainContent () {
 }
 
 function ProdDetails () {
+
+    const productId = useParams()
+    const {prodData} = useContext(ProductContext);
+
+    let product = {}
+
+    prodData.forEach((prod) => {
+
+        if(prod.id === Number(productId.productId)){
+            product = prod
+        } 
+    })
+
+    console.log(product.image)
+    console.log(typeof(product.image))
+
     return (
         <section className='prod-details'>
+
             <img 
                 className='hero-left' 
-                src="img/hero-chair.jpg" 
+                src={product.image} 
                 alt="hero-chair.jpg"
             />
             <div className='prod-info'>
                 <div className="prod-info-top">
-                    <h1>The Dandy Chair</h1>
-                    <p className='prod-price'>£250</p>
+                    <h1>{product.name}</h1>
+                    <p className='prod-price'>£{product.price}</p>
                 </div>
                 <hr className="prod-line-hor"/>
                 <div className="prod-info-desc">
                     <h5>Product description</h5>
-                    <p className="body-medium-txt">A timeless design, with premium materials features as one of our most popular and iconic pieces. The dandy chair is perfect for any stylish living space with beech legs and lambskin leather upholstery.</p>
+                    <p className="body-medium-txt">{product.description}</p>
                 </div>
                 <div className="prod-dimensions">
                     <h5>Dimensions</h5>
                     <ul className="dimensions-list">
                         <li className="dimensions-item">
                             <h6>Height</h6>
-                            <span className="body-medium-txt">110cm</span>
+                            <span className="body-medium-txt">{product.dimensions.height}cm</span>
                         </li>
                         <hr className="prod-line-ver"/>
                         <li className="dimensions-item">
                             <h6>Width</h6>
-                            <span className="body-medium-txt">75cm</span>
+                            <span className="body-medium-txt">{product.dimensions.width}cm</span>
                         </li>
                         <hr className="prod-line-ver"/>
                         <li className="dimensions-item">
                             <h6>Depth</h6>
-                            <span className="body-medium-txt">50cm</span>
+                            <span className="body-medium-txt">{product.dimensions.depth}cm</span>
                         </li>
                     </ul>
                 </div>

@@ -37,7 +37,7 @@ export default function ProductCard ({id, type, name, imgUrl, price}) {
 function BusketProductCard () {
     return (
         <div className="baskets-item">
-            <img src="img/product/product_1.jpg" alt="ProductCard.jpg"/>
+            <img src="/img/product/product_1.jpg" alt="ProductCard.jpg"/>
             <div className="basket-item-info">
                 <h4>Graystone vase</h4>
                 <span className="body-small-txt">A timeless ceramic vase with a tri color grey glaze.</span>
