@@ -66,7 +66,7 @@ function MultiDropdown ({name, menu}) {
             </button>
             <ul className="dropdown-list" style={{display: `${open ? '' : 'none'}`}}>
                 {menu.map((menuItem, index) => (
-                    <li key={index}className="dropdown-item">
+                    <li key={index} className="dropdown-item">
                         {menuItem}
                     </li>
                 ))}

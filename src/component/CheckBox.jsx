@@ -1,8 +1,8 @@
 import { useState } from "react";
 
-export default function CheckBox ({name}) {
+export default function CheckBox ({name, isActive}) {
     
-    const [isChecked, setIsChecked] = useState(false)
+    const [isChecked, setIsChecked] = useState(isActive)
 
     const handleClick = () => {
         setIsChecked((prev) => !prev)

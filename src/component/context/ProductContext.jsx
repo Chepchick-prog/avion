@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useCallback, useContext, useState } from "react";
 import { productData } from "../product-data";
 
 export const ProductContext = createContext({
@@ -15,8 +15,12 @@ function ProductProvider ({children}) {
 
     const avionUrl = useContext(AvionUrlContext)
 
+    const updateProductData = useCallback((value) => {
+        setProdData(value)
+    }, [])
+
     return (
-        <ProductContext.Provider value={{prodData, setProdData}}>
+        <ProductContext.Provider value={{prodData, updateProductData}}>
             <AvionUrlContext value={avionUrl} >
                 {children}
             </AvionUrlContext>

@@ -2,20 +2,36 @@ import CheckBox from "./CheckBox";
 import Dropdown from "./Dropdown";
 import Button from "./Button";
 import Input from "./Input";
+import { useContext } from "react";
+import { BrandContext, CategoryContext, PriceContext } from "./context/FilterContext";
+
 
 export default function Filter() {
+
+    const {categoryList} = useContext(CategoryContext);
+    const {brandList} = useContext(BrandContext)
+    const {price} = useContext(PriceContext)
+
+    console.log(categoryList)
+
     return (
         <section className="dectop-product-filter ">
             <div className="left">
-                <Dropdown 
-                    name='Product type'
-                    menu={[
+                <Dropdown
+                    name='Category'
+                    menu={
+                        // categoryList.map((item, index) => {<CheckBox key={index} name={item.name} isActive={item.isActive}/>})
+                        [
                         <CheckBox name={'Furniture'}/>,
+                        <CheckBox name={'Crockery'}/>,
                         <CheckBox name={'Homeware'}/>,
+                        <CheckBox name={'Plant pots'}/>,
+                        <CheckBox name={'Chairs'}/>,
                         <CheckBox name={'Sofas'}/>,
                         <CheckBox name={'Light fittings'}/>,
                         <CheckBox name={'Accessories'}/>,
-                    ]}
+                        ] 
+                    }
                 />
                 <Dropdown 
                     name='Price'
