@@ -17,14 +17,14 @@ import ProductProvider from './component/context/ProductContext';
 function App() {
   return (
     <ProductProvider>
-      <BrowserRouter>
+      <BrowserRouter basename='/avion/'>
         <Navigation/>
         <Routes>
-          <Route path='/' element={<HomePage/>}/>
-          <Route path='/baskets' element={<BusketsPage/>}/>
-          <Route path='/about' element={<AboutPage/>}/>
-          <Route path='/products' element={<ProductListingsPage/>}/>
-          <Route path='/products/:productId' element={<ProductPage/>}/>
+          <Route index element={<HomePage/>}/>
+          <Route path='baskets' element={<BusketsPage/>}/>
+          <Route path='about' element={<AboutPage/>}/>
+          <Route path='products' element={<ProductListingsPage/>}/>
+          <Route path='product/:productId' element={<ProductPage/>}/>
         </Routes>
       </BrowserRouter>
     </ProductProvider>

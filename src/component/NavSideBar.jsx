@@ -1,9 +1,12 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { NavLink } from "react-router-dom";
+import { AvionUrlContext } from "./context/ProductContext";
 
 import Input from "./Input";
 
 export default function SideBar () {
+
+    const avionUrl = useContext(AvionUrlContext)
 
     const [isOpen, setIsOpen] = useState(false);
 
@@ -16,13 +19,13 @@ export default function SideBar () {
                     className="side-bttn"
                     onClick={() => {setIsOpen(!isOpen)}}
                 >
-                    <img src="/img/icon/Search.svg" alt="Search-icon.svg"/>
+                    <img src={`${avionUrl.avionUrl}/img/icon/Search.svg`} alt="Search-icon.svg"/>
                 </button>
                 <button 
                     className="side-bttn"
                     onClick={() => {setIsOpen(!isOpen); setIsNav(!isNav)}}
                 >
-                    <img src="/img/icon/Menu.svg" alt="Menu-icon.svg"/>
+                    <img src={`${avionUrl.avionUrl}/img/icon/Menu.svg`} alt="Menu-icon.svg"/>
                 </button>
             </div>
             <div  
@@ -41,6 +44,9 @@ export default function SideBar () {
 
 
 function NavSide ({isOpen, setIsOpen, isNav, setIsNav}) {
+
+    const avionUrl = useContext(AvionUrlContext)
+
     return (
         <>
             <div className="side-top">
@@ -49,7 +55,7 @@ function NavSide ({isOpen, setIsOpen, isNav, setIsNav}) {
                     className="side-bttn"
                     onClick={() => {setIsOpen(!isOpen); setIsNav(!isNav)}}
                 >
-                    <img src="img/icon/Close.svg" alt="Close-icon.svg"/>
+                    <img src={`${avionUrl.avionUrl}/img/icon/Close.svg`} alt="Close-icon.svg"/>
                 </button>
             </div>
             <hr/>
@@ -69,12 +75,12 @@ function NavSide ({isOpen, setIsOpen, isNav, setIsNav}) {
             <nav className="side-bottom">
                 <ul>
                     <li>
-                        <img src="img/icon/User--avatar.svg" alt="Search-icon.svg"/>
+                        <img src={`${avionUrl.avionUrl}/img/icon/User--avatar.svg`} alt="Search-icon.svg"/>
                         My Profile
                     </li>                        
                     <li>
                         <NavLink to="/baskets">
-                            <img src="img/icon/Shopping--cart.svg" alt="Search-icon.svg"/>
+                            <img src={`${avionUrl.avionUrl}/img/icon/Shopping--cart.svg`} alt="Search-icon.svg"/>
                             My bag
                         </NavLink>
                     </li>
@@ -86,6 +92,9 @@ function NavSide ({isOpen, setIsOpen, isNav, setIsNav}) {
 
 
 function SearchSide ({isOpen, setIsOpen}) {
+
+    const avionUrl = useContext(AvionUrlContext)
+
     return (
         <>
             <div className="side-top">
@@ -94,7 +103,7 @@ function SearchSide ({isOpen, setIsOpen}) {
                     className="side-bttn"
                     onClick={() => {setIsOpen(!isOpen)}}
                 >
-                    <img src="img/icon/Close.svg" alt="Close-icon.svg"/>
+                    <img src={`${avionUrl.avionUrl}/img/icon/Close.svg`} alt="Close-icon.svg"/>
                 </button>
             </div>
             <div className="side-bottom">

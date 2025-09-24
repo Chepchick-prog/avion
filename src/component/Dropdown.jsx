@@ -1,4 +1,5 @@
-import { useState } from "react"
+import { useContext, useState } from "react"
+import { AvionUrlContext } from "./context/ProductContext"
 
 export default function Dropdown ({ type, name, menu }) {
 
@@ -15,6 +16,8 @@ function SingleDropdown ({menu}) {
     const [open, setOpen] = useState(false)
     const [selected, setSelected] = useState(menu[1])
 
+    const avionUrl = useContext(AvionUrlContext);
+
     return (
         <div className="dropdown-content"
             onMouseEnter={() => {setOpen(true)}}
@@ -25,7 +28,7 @@ function SingleDropdown ({menu}) {
                 onClick={() => {setOpen(!open)}}
                 >
                 <span className="body-medium-txt">{selected}</span>
-                <img src={`/img/icon/Caret--${open ? 'up' : 'down'}.svg`} alt="ProductCard.jpg"/>
+                <img src={`${avionUrl.avionUrl}/img/icon/Caret--${open ? 'up' : 'down'}.svg`} alt="ProductCard.jpg"/>
             </button>
             <ul className="dropdown-list" style={{display: `${open ? 'unset' : 'none'}`}}>
                 {menu.map((menuItem, index) => (
@@ -48,6 +51,8 @@ function MultiDropdown ({name, menu}) {
 
     const [open, setOpen] = useState(false)
 
+    const avionUrl = useContext(AvionUrlContext);
+
     return (
         <div
             className="dropdown-content"
@@ -57,7 +62,7 @@ function MultiDropdown ({name, menu}) {
             <button
                 className='dropdown mob-dropdown'>
                 <span className="body-medium-txt">{name}</span>
-                <img src={`/img/icon/Caret--${open ? 'up' : 'down'}.svg`} alt="ProductCard.jpg"/>
+                <img src={`${avionUrl.avionUrl}/img/icon/Caret--${open ? 'up' : 'down'}.svg`} alt="ProductCard.jpg"/>
             </button>
             <ul className="dropdown-list" style={{display: `${open ? '' : 'none'}`}}>
                 {menu.map((menuItem, index) => (

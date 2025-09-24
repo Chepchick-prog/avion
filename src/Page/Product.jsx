@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { ProductContext } from "../component/context/ProductContext";
+import { AvionUrlContext, ProductContext } from "../component/context/ProductContext";
 import Features from "../component/Features";
 import JoinClubPage from "../component/JoinClubPage";
 import Footer from "../component/Footer";
@@ -47,6 +47,8 @@ function MainContent () {
 
 function ProdDetails () {
 
+    const avionUrl = useContext(AvionUrlContext)
+
     const productId = useParams()
     const {prodData} = useContext(ProductContext);
 
@@ -67,7 +69,7 @@ function ProdDetails () {
 
             <img 
                 className='hero-left' 
-                src={product.image} 
+                src={`${avionUrl.avionUrl}/${product.image}`} 
                 alt="hero-chair.jpg"
             />
             <div className='prod-info'>

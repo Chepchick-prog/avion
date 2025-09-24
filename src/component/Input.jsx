@@ -1,6 +1,9 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AvionUrlContext } from "./context/ProductContext";
 
 export default function Input ({type, maxWidth=500}) {
+
+    const avionUrl = useContext(AvionUrlContext)
 
     const [search, setSearch] = useState('')
     const [email, setEmail] = useState('')
@@ -43,7 +46,7 @@ export default function Input ({type, maxWidth=500}) {
                     value={search}
                     onChange={(e) => {handleSearchInput(e)}}
                 />
-                <button><img src="img/icon/Search.svg" alt="Search-icon.svg"/></button>
+                <button><img src={`${avionUrl.avionUrl}/img/icon/Search.svg`} alt="Search-icon.svg"/></button>
             </form>
         )
     } else {
