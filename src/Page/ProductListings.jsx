@@ -47,7 +47,6 @@ function ProductList () {
                         name={prod.name}
                         imgUrl={prod.image}
                         price={prod.price}
-
                     />
             ))}
         </div>

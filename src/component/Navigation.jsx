@@ -1,8 +1,13 @@
+import { useContext } from "react";
 import { NavLink } from "react-router-dom";
+import { AvionUrlContext } from "./context/ProductContext";
 
 import SideBar from "./NavSideBar";
 
 export default function Navigation () {
+
+    const avionUrl = useContext(AvionUrlContext)
+
     return (
         <header className="header-container">
             <div className="navigation">
@@ -24,11 +29,11 @@ export default function Navigation () {
                             
                         </div>
                         <div className="right-actions">
-                            <img src="/img/icon/Search.svg" alt="Search-icon.svg"/>
-                            <NavLink to="/baskets">
-                                <img src="/img/icon/Shopping--cart.svg" alt="Shopping-cart-icon.svg"/>
+                            <img src={`${avionUrl.avionUrl}/img/icon/Search.svg`} alt="Search-icon.svg"/>
+                            <NavLink to="baskets">
+                                <img src={`${avionUrl.avionUrl}/img/icon/Shopping--cart.svg`} alt="Shopping-cart-icon.svg"/>
                             </NavLink>
-                            <img src="/img/icon/User--avatar.svg" alt="User-avatar-icon.svg"/>
+                            <img src={`${avionUrl.avionUrl}/img/icon/User--avatar.svg`} alt="User-avatar-icon.svg"/>
                         </div>
                     </div>
                     <SideBar/>

@@ -1,3 +1,5 @@
+import { useContext } from "react"
+import { AvionUrlContext } from "./context/ProductContext"
 import Input from "./Input"
 
 export default function Footer ({type}) {
@@ -10,6 +12,9 @@ export default function Footer ({type}) {
 }
 
 function FooterSingUp () {
+
+    const avionUrl = useContext(AvionUrlContext)
+
     return (
         <footer className="footer-container">
             <div className="footer-top">
@@ -43,12 +48,12 @@ function FooterSingUp () {
             <div className="footer-bottom">
                 <span className="body-small-txt">Copyright 2022 Avion LTD</span>
                 <div className="social-links">
-                    <img src="/img/icon/Logo--linkedin.svg" alt="icon.svg"/>
-                    <img src="/img/icon/Logo--facebook.svg" alt="icon.svg"/>
-                    <img src="/img/icon/Logo--instagram.svg" alt="icon.svg"/>
-                    <img src="/img/icon/Logo--skype.svg" alt="icon.svg"/>
-                    <img src="/img/icon/Logo--twitter.svg" alt="icon.svg"/>
-                    <img src="/img/icon/Logo--pinterest.svg" alt="icon.svg"/>
+                    <img src={`${avionUrl.avionUrl}/img/icon/Logo--linkedin.svg`} alt="icon.svg"/>
+                    <img src={`${avionUrl.avionUrl}/img/icon/Logo--facebook.svg`} alt="icon.svg"/>
+                    <img src={`${avionUrl.avionUrl}/img/icon/Logo--instagram.svg`} alt="icon.svg"/>
+                    <img src={`${avionUrl.avionUrl}/img/icon/Logo--skype.svg`} alt="icon.svg"/>
+                    <img src={`${avionUrl.avionUrl}/img/icon/Logo--twitter.svg`} alt="icon.svg"/>
+                    <img src={`${avionUrl.avionUrl}/img/icon/Logo--pinterest.svg`} alt="icon.svg"/>
                 </div>
             </div>
         </footer>

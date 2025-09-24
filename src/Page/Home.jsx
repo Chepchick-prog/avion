@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
-import { ProductContext } from "../component/context/ProductContext";
+import { AvionUrlContext, ProductContext } from "../component/context/ProductContext";
 
 import Button from "../component/Button";
 import Features from "../component/Features";
@@ -30,6 +30,8 @@ function MainContent () {
                 {prodData.slice(0, 4).map((prodItem) => (
                     <ProductCard
                         key={prodItem.id}
+                        id = {prodItem.id}
+                        type={prodItem.type === 'Sofas' ? 'big' : ''}
                         name={prodItem.name}
                         imgUrl={prodItem.image}
                         price={prodItem.price}
@@ -40,6 +42,8 @@ function MainContent () {
                 {prodData.slice(4, 8).map((prodItem) => (
                     <ProductCard
                         key={prodItem.id}
+                        id = {prodItem.id}
+                        type={prodItem.type === 'Sofas' ? 'big' : ''}
                         name={prodItem.name}
                         imgUrl={prodItem.image}
                         price={prodItem.price}
@@ -60,6 +64,8 @@ function Hero() {
         navigate('/products')
     }
 
+    const avionUrl = useContext(AvionUrlContext);
+
     return (
         <section className='hero hero-container'>
             <div className='hero-right'>
@@ -74,7 +80,7 @@ function Hero() {
             </div>
             <img 
                 className='hero-left' 
-                src="/img/hero-chair.jpg" 
+                src={`${avionUrl.avionUrl}/img/hero-chair.jpg`}
                 alt="hero-chair.jpg"
             />
         </section>
