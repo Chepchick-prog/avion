@@ -2,96 +2,153 @@ import CheckBox from "./CheckBox";
 import Dropdown from "./Dropdown";
 import Button from "./Button";
 import Input from "./Input";
-import { useContext } from "react";
-import { BrandContext, CategoryContext, PriceContext } from "./context/FilterContext";
+import { useContext, useState } from "react";
+import { BrandContext, CategoryContext, PriceContext, SortingContext } from "./context/FilterContext";
 
 
-export default function Filter() {
-
-    const {categoryList} = useContext(CategoryContext);
-    const {brandList} = useContext(BrandContext)
-    const {price} = useContext(PriceContext)
-
-    console.log(categoryList)
-
+function Filter() {
     return (
         <section className="dectop-product-filter ">
             <div className="left">
-                <Dropdown
-                    name='Category'
-                    menu={
-                        // categoryList.map((item, index) => {<CheckBox key={index} name={item.name} isActive={item.isActive}/>})
-                        [
-                        <CheckBox name={'Furniture'}/>,
-                        <CheckBox name={'Crockery'}/>,
-                        <CheckBox name={'Homeware'}/>,
-                        <CheckBox name={'Plant pots'}/>,
-                        <CheckBox name={'Chairs'}/>,
-                        <CheckBox name={'Sofas'}/>,
-                        <CheckBox name={'Light fittings'}/>,
-                        <CheckBox name={'Accessories'}/>,
-                        ] 
-                    }
-                />
-                <Dropdown 
-                    name='Price'
-                    menu={[
-                        <FilterPrice/>
-                    ]}
-                />
-                <Dropdown 
-                    name='Brand'
-                    menu={[
-                        <CheckBox name={'Robert Smith'}/>,
-                        <CheckBox name={'Liam Gallagher'}/>,
-                        <CheckBox name={'Biggie Smalls'}/>,
-                        <CheckBox name={'Thom Yorke'}/>,
-                    ]}
-                />        
+                <CategoryFilter/>
+                <PriceFilter/>
+                <BrandFilter/>
             </div>
             <div className="right">
-                <FilterSorting/>
+                <SortingFilter/>
             </div>
 
         </section>
 );
 }
 
-function FilterSorting () {
+function CategoryFilter () {
+    const {categoryList, updateCategoryFilter} = useContext(CategoryContext);
+
+    function CategoryFilterChange (itemIndex) {
+        const newCategoryList = categoryList.map((item, index) => {
+
+            if(index === itemIndex) {
+                return ({...item, isActive: !item.isActive});
+            } else {
+                return item;
+            }
+        })
+
+        updateCategoryFilter(newCategoryList);
+    }
+
     return (
         <>
-            <span className="body-small-txt">Sorting by:</span>
-            <Dropdown 
-                type='single'
-                menu={[
-                    'By popularity',
-                    'By rating',
-                    'By newest',
-                    'By price (low-hight)',
-                    'By price (hight-low)',
-                ]}
-            />
+            <Dropdown name={'Category'}>
+                {categoryList.map((item, itemIndex) => (
+                    <CheckBox key={itemIndex} itemId={itemIndex} name={item.name} isActive={item.isActive} onChange={()=> {CategoryFilterChange(itemIndex)}}/>
+                ))}
+                <div className="filter-content">
+                    <Button className='filter-btn' name='Cancel' />
+                    <Button className='filter-btn' type='primary' name='Done' />
+                </div>
+            </Dropdown>
         </>
     )
 }
 
-function FilterPrice () {
+function BrandFilter () {
+
+    const {brandList, updateBrandFilter} = useContext(BrandContext)
+
+    function BrandFilterChange (itemIndex) {
+        const newBrandList = brandList.map((item, index) => {
+
+            if(index === itemIndex) {
+                return ({...item, isActive: !item.isActive});
+            } else {
+                return item;
+            }
+        })
+
+        updateBrandFilter(newBrandList);
+    }
+
     return (
-        <div className="price-filter">
-            <div className="price-filter-content">
-                <div>
-                    <span className="body-small-txt">From</span>
-                    <Input type='number' />
+        <>
+            <Dropdown name={'Brand'}>
+                {brandList.map((item, itemIndex) => (
+                    <CheckBox key={itemIndex} name={item.name} isActive={item.isActive} onChange={()=>{BrandFilterChange(itemIndex)}}/>
+                ))}
+                <div className="filter-content">
+                    <Button className='filter-btn' name='Cancel' />
+                    <Button className='filter-btn' type='primary' name='Done' />
                 </div>
-                <div>
-                    <span className="body-small-txt">Before</span>
-                    <Input type='number' />
-                </div>
-            </div>
-            <div className="price-filter-content">
-                <Button name='Cancel' />
-                <Button type='primary' name='Done' />
-            </div>
-        </div>
+            </Dropdown>    
+        </>
     )
 }
+
+function PriceFilter () {
+
+    const {price, updatePriceFilter} = useContext(PriceContext)
+
+
+    function minPriceChange (e) {
+        e.preventDefault()
+        updatePriceFilter({min: e.target.value, max: price.max})
+    }
+
+    function maxPriceChange (e) {
+        e.preventDefault()
+        updatePriceFilter({min: price.min , max: e.target.value})
+    }
+
+    return (
+        <Dropdown name={'Price'}>
+            <div className="price-filter">
+                <div className="filter-content">
+                    <div>
+                        <span className="body-small-txt">From</span>
+                        <Input type='number' value={price.min} onChange={minPriceChange}/>
+                    </div>
+                    <div>
+                        <span className="body-small-txt">Before</span>
+                        <Input type='number' value={price.max} onChange={maxPriceChange}/>
+                    </div>
+                </div>
+                <div className="filter-content">
+                    <Button className='filter-btn' name='Cancel' />
+                    <Button className='filter-btn' type='primary' name='Done' />
+                </div>
+            </div>
+        </Dropdown>
+    )
+}
+
+function SortingFilter () {
+
+    const {sortList} = useContext(SortingContext)
+
+    const [selectedSort, setSelectedSort] = useState(sortList[0])
+
+    function SortingFilterChange (itemId) {
+        sortList.forEach((item) => {
+            if(item.id === itemId) {
+                return setSelectedSort(item)
+            }
+        })
+
+    }
+
+    return (
+        <>
+            <span className="body-small-txt">Sorting by:</span>
+            <Dropdown type='single' selectedSort={selectedSort.name}>
+                {sortList.map((item) => (
+                    <span key={item.id} name={item.name} onClick={()=>{SortingFilterChange(item.id)}}>
+                        {item.name}
+                    </span>
+                ))}
+            </Dropdown>
+        </>
+    )
+}
+
+export default Filter;

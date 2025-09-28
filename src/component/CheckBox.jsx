@@ -1,22 +1,16 @@
-import { useState } from "react";
-
-export default function CheckBox ({name, isActive}) {
+function CheckBox ({name, isActive, onChange}) {
     
-    const [isChecked, setIsChecked] = useState(isActive)
-
-    const handleClick = () => {
-        setIsChecked((prev) => !prev)
-    }
 
     return (
         <div 
             className="checkbox" 
-            onClick={() => handleClick()}>
+            onClick={onChange}
+            >
 
             <label className="checkbox-container body-medium-txt">
                 <input 
                 type="checkbox" 
-                checked={isChecked} 
+                checked={isActive} 
                 readOnly
                 />
                 <span className="checkmark"></span>
@@ -25,3 +19,5 @@ export default function CheckBox ({name, isActive}) {
         </div>
     );
 }
+
+export default CheckBox;

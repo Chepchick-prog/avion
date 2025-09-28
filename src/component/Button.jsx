@@ -1,8 +1,11 @@
-export default function Button ({type, name, onClick}) {
+export default function Button ({type, name, onClick, className}) {
 
     let styleBtn = ''
 
     switch(type) {
+        case 'filter-btn':
+            styleBtn = 'filter-btn'
+            break;
         case 'primary': 
             styleBtn = 'primary-btn'
             break;
@@ -18,7 +21,7 @@ export default function Button ({type, name, onClick}) {
     }
 
     return (
-        <button className={styleBtn} onClick={onClick}>
+        <button className={`${className} ${styleBtn}`} onClick={onClick}>
             <span className="body-medium-txt">{name}</span>
         </button>
     )

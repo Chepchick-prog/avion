@@ -40,12 +40,24 @@ export const CategoryContext = createContext ({
 })
 
 export const BrandContext = createContext ({
-    brand: {
-        robertSmith: false,
-        liamGallagher: false,
-        biggieSmalls: false,
-        thomYorke: false,
-    },
+    brand: [
+        {
+            name: 'Robert Smith',
+            isActive: false,
+        },        
+        {
+            name: 'Liam Gallagher',
+            isActive: false,
+        },
+        {
+            name: 'Biggie Smalls',
+            isActive: false,
+        },
+        {
+            name: 'Thom Yorke',
+            isActive: false,
+        },
+    ],
     updateBrandFilter: null,
 })
 
@@ -57,6 +69,32 @@ export const PriceContext = createContext ({
     updatePriceFilter: null,
 })
 
+
+export const SortingContext = createContext ({
+    sortList: [
+        {
+            id: 'popular',
+            name: 'By popularity'
+        },
+        {
+            id: 'rating',
+            name: 'By rating'
+        },
+        {
+            id: 'newest',
+            name: 'By newest'
+        },
+        {
+            id: 'price-low',
+            name: 'By price (low-hight)'
+        },
+        {
+            id: 'price-hight',
+            name: 'By price (hight-low)'
+        },
+    ],
+    updateSortFilter: null,
+})
 
 function FilterProvider ({children}) {
 
@@ -109,14 +147,47 @@ function FilterProvider ({children}) {
         },
     ])
 
-    const [brandList, setBrandList] = useState({
+    const [brandList, setBrandList] = useState([
+        {
+            name: 'Robert Smith',
+            isActive: false,
+        },        
+        {
+            name: 'Liam Gallagher',
+            isActive: false,
+        },
+        {
+            name: 'Biggie Smalls',
+            isActive: false,
+        },
+        {
+            name: 'Thom Yorke',
+            isActive: false,
+        },
+    ])
 
-        robertSmith: false,
-        liamGallagher: false,
-        biggieSmalls: false,
-        thomYorke: false,
-
-    })
+    const [sortList, setSortList] = useState([
+        {
+            id: 'popular',
+            name: 'By popularity'
+        },
+        {
+            id: 'rating',
+            name: 'By rating'
+        },
+        {
+            id: 'newest',
+            name: 'By newest'
+        },
+        {
+            id: 'price-low',
+            name: 'By price (low-hight)'
+        },
+        {
+            id: 'price-hight',
+            name: 'By price (hight-low)'
+        },
+    ])
 
     const updateCategoryFilter = useCallback((value) => {
         setCategoryList(value)
@@ -130,11 +201,17 @@ function FilterProvider ({children}) {
         setBrandList(value)
     }, [])
 
+    const updateSortFilter = useCallback((value) => {
+        setSortList(value)
+    }, [])
+
     return (
         <CategoryContext.Provider value={{categoryList, updateCategoryFilter}}>
             <PriceContext.Provider value={{price, updatePriceFilter}}>
                 <BrandContext.Provider value={{brandList, updateBrandFilter}}>
-                    {children}
+                    <SortingContext.Provider value={{sortList, updateSortFilter}}>
+                        {children}
+                    </SortingContext.Provider>
                 </BrandContext.Provider>
             </PriceContext.Provider>
         </CategoryContext.Provider>

@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { AvionUrlContext } from "./context/ProductContext";
 
-export default function Input ({type, maxWidth=500}) {
+export default function Input ({type, maxWidth=500, value, onChange}) {
 
     const avionUrl = useContext(AvionUrlContext)
 
@@ -28,7 +28,7 @@ export default function Input ({type, maxWidth=500}) {
             break;
 
         case 'number' :
-            return <NumInput/>
+            return <NumInput value={value} onChange={onChange}/>
 
         default :
             inputStyle = 'primary-input'
@@ -67,6 +67,15 @@ export default function Input ({type, maxWidth=500}) {
 
 }
 
-function NumInput ({value}) {
-    return <input className="num-input" type="number" step="any" value={value}/>
+function NumInput ({value, onChange}) {
+
+
+    return (
+        <input 
+            className="num-input"
+            type="number"
+            step="any"
+            value={value}
+            onChange={onChange}
+        />)
 }

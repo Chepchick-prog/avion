@@ -1,53 +1,50 @@
 import { useContext, useState } from "react"
 import { AvionUrlContext } from "./context/ProductContext"
 
-export default function Dropdown ({ type, name, menu }) {
+export default function Dropdown ({ type, name, selectedSort, children}) {
 
     switch(type) {
         case 'single' :
-            return <SingleDropdown menu={menu}/>
+            return <SingleDropdown selectedSort={selectedSort} children={children} />
         default :
-            return <MultiDropdown name={name} menu={menu}/>
-
+            return <MultiDropdown name={name} children={children}/>
     }
 }
 
-function SingleDropdown ({menu}) {
-    const [open, setOpen] = useState(false)
-    const [selected, setSelected] = useState(menu[1])
+function SingleDropdown ({selectedSort, children}) {
 
     const avionUrl = useContext(AvionUrlContext);
 
+    const [isOpen, setIsOpen] = useState(false)
+
+
     return (
         <div className="dropdown-content"
-            onMouseEnter={() => {setOpen(true)}}
-            onMouseLeave={() => {setOpen(false)}}
+            onMouseEnter={() => {setIsOpen(true)}}
+            onMouseLeave={() => {setIsOpen(false)}}
             >
-            <button
+            <div
                 className='dropdown mob-dropdown'
-                onClick={() => {setOpen(!open)}}
+                onClick={() => {setIsOpen(!isOpen)}}
                 >
-                <span className="body-medium-txt">{selected}</span>
-                <img src={`${avionUrl.avionUrl}/img/icon/Caret--${open ? 'up' : 'down'}.svg`} alt="ProductCard.jpg"/>
-            </button>
-            <ul className="dropdown-list" style={{display: `${open ? 'unset' : 'none'}`}}>
-                {menu.map((menuItem, index) => (
-                    <li
-                        key={index}
-                        className="dropdown-item"
-                        onClick={() => {
-                            setOpen(false);
-                            setSelected(menuItem)
-                        }}>
-                        {menuItem}
-                    </li>
-                ))}
+                <span className="body-medium-txt">{selectedSort}</span>
+                <img src={`${avionUrl.avionUrl}/img/icon/Caret--${isOpen ? 'up' : 'down'}.svg`} alt="ProductCard.jpg"/>
+            </div>
+            <ul className="dropdown-list" style={{display: `${isOpen ? 'unset' : 'none'}`}}>
+                <li
+                    className="dropdown-item"
+                    onClick={() => {
+                        setIsOpen(false);
+                        
+                    }}>
+                    {children}
+                </li>
             </ul>
         </div>
     )   
 }
 
-function MultiDropdown ({name, menu}) {
+function MultiDropdown ({name, children}) {
 
     const [open, setOpen] = useState(false)
 
@@ -59,17 +56,15 @@ function MultiDropdown ({name, menu}) {
             onMouseEnter={() => {setOpen(true)}}
             onMouseLeave={() => {setOpen(false)}}
             >
-            <button
+            <div
                 className='dropdown mob-dropdown'>
                 <span className="body-medium-txt">{name}</span>
                 <img src={`${avionUrl.avionUrl}/img/icon/Caret--${open ? 'up' : 'down'}.svg`} alt="ProductCard.jpg"/>
-            </button>
+            </div>
             <ul className="dropdown-list" style={{display: `${open ? '' : 'none'}`}}>
-                {menu.map((menuItem, index) => (
-                    <li key={index} className="dropdown-item">
-                        {menuItem}
-                    </li>
-                ))}
+                <li className="dropdown-item">
+                    {children}
+                </li>
             </ul>
         </div>
     )   

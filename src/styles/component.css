@@ -149,7 +149,7 @@ button :first-child {
 
 .secondary-btn {
     
-    background-color: var(--light-gray-color);
+    background-color: #f1f1f5;
     color: var(--dark-primary-color)
 }
 
@@ -166,6 +166,11 @@ button :first-child {
 .white-btn {
     background-color: var(--white-color);
     color: var(--dark-primary-color)
+}
+
+.filter-content button {
+    width: 100%;
+    padding: 16px 10px;
 }
 
 
@@ -318,7 +323,7 @@ input[type='submit'] {
 }
 
 .num-input[type="number"] {
-  width: 100px;
+  width: 100%;
   height: 50px;
   border: 1px solid var(--light-gray-color);  
   border-radius: 4px;
@@ -449,6 +454,19 @@ input[type='submit'] {
     align-items: center;
 }
 
+.filter-content{
+    display: grid;
+    width: 100%;
+    gap: 14px;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.filter-content div{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
 
 .dropdown-list {
     display: grid;
@@ -459,7 +477,12 @@ input[type='submit'] {
 .dropdown-item {
     cursor: pointer;
     display: flex;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-start;
+
+    min-width: 210px;
+    width: min-content;
+
     gap: 12px;
 }
 
@@ -468,16 +491,7 @@ input[type='submit'] {
     gap: 20px;
 }
 
-.price-filter-content{
-    display: flex;
-    width: 100%;
-    gap: 14px;
-}
 
-.price-filter-content div{
-    width: 100%;
-    display: grid;
-}
 
 /* Features Page*/
 
@@ -897,7 +911,8 @@ footer {
         width: 100%;
     }
 
-    .mob-dropdown {display: flex;
+    .mob-dropdown {
+        display: flex;
         width: 100%;
         background-color: var(--border-gray-color);
     }
