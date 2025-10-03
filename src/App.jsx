@@ -7,12 +7,12 @@ import './styles/component.css'
 import ProductProvider from './component/context/ProductContext';
 import FilterProvider from './component/context/FilterContext';
 
-import HomePage from './Page/Home';
-import AboutPage from './Page/About';
-import ProductPage from './Page/Product';
-import ProductListingsPage from './Page/ProductListings';
-import Navigation from './component/Navigation';
-import BusketsPage from './Page/Baskets';
+import HomePage from './page/Home';
+import AboutPage from './page/About';
+import ProductPage from './page/Product';
+import CatalogListingsPage from './page/ProductListings';
+import Navigation from './component/features/Navigation';
+import BusketsPage from './page/Baskets';
 
 
 
@@ -26,7 +26,7 @@ function App() {
             <Route index element={<HomePage/>}/>
             <Route path='baskets' element={<BusketsPage/>}/>
             <Route path='about' element={<AboutPage/>}/>
-            <Route path='products' element={<ProductListingsPage/>}/>
+            <Route path='catalog/:catalogId' element={<CatalogListingsPage/>}/>
             <Route path='product/:productId' element={<ProductPage/>}/>
           </Routes>
         </BrowserRouter>

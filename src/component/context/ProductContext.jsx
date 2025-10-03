@@ -1,8 +1,12 @@
 import { createContext, useCallback, useContext, useState } from "react";
 import { productData } from "../product-data";
 
+export const OriginalProductContext = createContext()
+
 export const ProductContext = createContext({
-    prodData: productData.products
+    prodData: productData.products,
+    updateProductData: null,
+    resetProductData: null
 })
 
 export const AvionUrlContext = createContext({
@@ -11,19 +15,27 @@ export const AvionUrlContext = createContext({
 
 function ProductProvider ({children}) {
 
-    const [prodData, setProdData] = useState(productData.products)
+    const [prodData, setProdData] = useState(productData)
 
+    const [originalProduct] = useState(productData);
+    
     const avionUrl = useContext(AvionUrlContext)
 
     const updateProductData = useCallback((value) => {
         setProdData(value)
     }, [])
 
+    const resetProductData = useCallback(() => {
+        setProdData(productData)
+    }, [])
+
     return (
-        <ProductContext.Provider value={{prodData, updateProductData}}>
-            <AvionUrlContext value={avionUrl} >
-                {children}
-            </AvionUrlContext>
+        <ProductContext.Provider value={{prodData, updateProductData, resetProductData}}>
+            <OriginalProductContext value={{ originalProduct }}>
+                <AvionUrlContext value={avionUrl} >
+                    {children}
+                </AvionUrlContext>
+            </OriginalProductContext>
         </ProductContext.Provider>
     )
 }

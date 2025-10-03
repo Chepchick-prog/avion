@@ -1,13 +1,15 @@
 import { useContext } from "react";
-import { AvionUrlContext, ProductContext } from "../component/context/ProductContext";
-import Features from "../component/Features";
-import JoinClubPage from "../component/JoinClubPage";
-import Footer from "../component/Footer";
-import ProductCard from "../component/ProductCard";
-import Listings from "../component/Listings";
-import Button from "../component/Button";
-import Stepper from "../component/Stepper";
 import { useParams } from "react-router-dom";
+
+import { AvionUrlContext, ProductContext } from "../component/context/ProductContext";
+
+import Features from "../component/features/Features";
+import JoinClubPage from "../component/features/JoinClubPage";
+import Footer from "../component/features/Footer";
+import ProductCard from "../component/features/ProductCard";
+import Listings from "../component/features/Listings";
+import Button from "../component/common/Button";
+import Stepper from "../component/common/Stepper";
 
 
 export default function ProductPage () {
@@ -60,9 +62,6 @@ function ProdDetails () {
             product = prod
         } 
     })
-
-    console.log(product.image)
-    console.log(typeof(product.image))
 
     return (
         <section className='prod-details'>

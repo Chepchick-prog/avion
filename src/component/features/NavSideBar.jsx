@@ -1,8 +1,8 @@
 import { useContext, useState } from "react";
 import { NavLink } from "react-router-dom";
-import { AvionUrlContext } from "./context/ProductContext";
+import { AvionUrlContext } from "../context/ProductContext";
 
-import Input from "./Input";
+import Input from "../common/Input";
 
 export default function SideBar () {
 

@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { NavLink } from "react-router-dom";
-import { AvionUrlContext } from "./context/ProductContext";
-import Stepper from "./Stepper";
+import { AvionUrlContext } from "../context/ProductContext";
+import Stepper from "../common/Stepper";
 
 export default function ProductCard ({id, type, name, imgUrl, price}) {
 

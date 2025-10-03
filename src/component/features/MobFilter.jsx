@@ -1,4 +1,4 @@
-import CheckBox from "./CheckBox"
+import CheckBox from "../common/CheckBox"
 import Dropdown from "./Dropdown"
 
 export default function MobFilter () {

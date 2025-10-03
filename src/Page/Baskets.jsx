@@ -1,6 +1,6 @@
-import Button from "../component/Button";
-import Footer from "../component/Footer";
-import ProductCard from "../component/ProductCard";
+import Button from "../component/common/Button";
+import Footer from "../component/features/Footer";
+import ProductCard from "../component/features/ProductCard";
 
 export default function BusketsPage () {
     return (

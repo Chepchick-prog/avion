@@ -1,6 +1,6 @@
-import Features from "../component/Features";
-import JoinClubPage from "../component/JoinClubPage";
-import Footer from "../component/Footer";
+import Features from "../component/features/Features";
+import JoinClubPage from "../component/features/JoinClubPage";
+import Footer from "../component/features/Footer";
 
 export default function AboutPage () {
     return (

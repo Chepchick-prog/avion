@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import { AvionUrlContext } from "./context/ProductContext";
-import Input from "./Input";
+import { AvionUrlContext } from "../context/ProductContext";
+import Input from "../common/Input";
 
 export default function JoinClubPage ({type}) {
     switch (type) {

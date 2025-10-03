@@ -1,7 +1,20 @@
-import { createContext, useCallback, useContext, useState } from "react";
-import { ProductContext } from "./ProductContext";
+import { createContext, useCallback, useContext, useMemo, useState } from "react";
+import { ProductContext, OriginalProductContext } from "./ProductContext";
 
-export const CategoryContext = createContext ({
+export const FilterContext = createContext( {
+
+    filter:{},
+
+    updateFilter: () => {},
+
+    resetFilter: () => {},
+    resetAll: () => {},
+
+    filterListChange: () => {},
+    filterProductData: () => {},
+})
+
+const INITIAL_FILTERS = {
     category: [
         {
             name: 'Furniture',
@@ -36,10 +49,6 @@ export const CategoryContext = createContext ({
             isActive: false,
         },
     ],
-    updateCategoryFilter: null,
-})
-
-export const BrandContext = createContext ({
     brand: [
         {
             name: 'Robert Smith',
@@ -58,20 +67,8 @@ export const BrandContext = createContext ({
             isActive: false,
         },
     ],
-    updateBrandFilter: null,
-})
-
-export const PriceContext = createContext ({
-    price: {
-        min: 0,
-        max: 1000,
-    },
-    updatePriceFilter: null,
-})
-
-
-export const SortingContext = createContext ({
-    sortList: [
+    price: {min: 0, max: 1000},
+    sort: [
         {
             id: 'popular',
             name: 'By popularity'
@@ -93,128 +90,126 @@ export const SortingContext = createContext ({
             name: 'By price (hight-low)'
         },
     ],
-    updateSortFilter: null,
-})
+}
 
 function FilterProvider ({children}) {
 
-    const {prodData} = useContext(ProductContext)
+    const { prodData, updateProductData } = useContext(ProductContext)
+    const { originalProduct } = useContext(OriginalProductContext)
 
-    const priceList = prodData.map((prod) => prod.price)
+    const availablePriceRange = useMemo(() => ({
+        min: Math.min(...prodData.map(p => p.price)),
+        max: Math.max(...prodData.map(p => p.price)),
+    }), [prodData])
 
-    const getMinPrice = (value) => {
-        return value.reduce((x, y) => Math.min(x, y));
-    }
+    const [filters, setFilters] = useState({...INITIAL_FILTERS, price: {...availablePriceRange}})
 
-    const getMaxPrice = (value) => {
-        return value.reduce((x, y) => Math.max(x, y));
-    }
+    const updateFilter = useCallback((filterType, value) => {
 
-    const [price, setPrice] = useState({min: getMinPrice(priceList), max: getMaxPrice(priceList)})
+        setFilters(prev => ({
+            ...prev,
+            [filterType]: value,
+        }));
 
-    const [categoryList, setCategoryList] = useState([
-        {
-            name: 'Furniture',
-            isActive: false,
-        },
-        {
-            name: 'Crockery',
-            isActive: false,
-        },
-        {
-            name: 'Homeware',
-            isActive: false,
-        },
-        {
-            name: 'Plant pots',
-            isActive: false,
-        },
-        {
-            name: 'Chairs',
-            isActive: false,
-        },
-        {
-            name: 'Sofas',
-            isActive: false,
-        },
-        {
-            name: 'Light fittings',
-            isActive: false,
-        },
-        {
-            name: 'Accessories',
-            isActive: false,
-        },
-    ])
-
-    const [brandList, setBrandList] = useState([
-        {
-            name: 'Robert Smith',
-            isActive: false,
-        },        
-        {
-            name: 'Liam Gallagher',
-            isActive: false,
-        },
-        {
-            name: 'Biggie Smalls',
-            isActive: false,
-        },
-        {
-            name: 'Thom Yorke',
-            isActive: false,
-        },
-    ])
-
-    const [sortList, setSortList] = useState([
-        {
-            id: 'popular',
-            name: 'By popularity'
-        },
-        {
-            id: 'rating',
-            name: 'By rating'
-        },
-        {
-            id: 'newest',
-            name: 'By newest'
-        },
-        {
-            id: 'price-low',
-            name: 'By price (low-hight)'
-        },
-        {
-            id: 'price-hight',
-            name: 'By price (hight-low)'
-        },
-    ])
-
-    const updateCategoryFilter = useCallback((value) => {
-        setCategoryList(value)
     }, [])
 
-    const updatePriceFilter = useCallback((value) => {
-        setPrice(value)
-    }, [])
+    const resetFilter = useCallback ((filterType) => {
+        if(filterType === 'price') {
+            setFilters(prev => ({
+                ...prev,
+                price: {...availablePriceRange},
+            }));
+        } else {
+            setFilters(prev => ({
+                ...prev,
+                [filterType]:INITIAL_FILTERS[filterType],
+            }))
+        }
 
-    const updateBrandFilter = useCallback((value) => {
-        setBrandList(value)
-    }, [])
+        // filterProductData(filterType, filters)
 
-    const updateSortFilter = useCallback((value) => {
-        setSortList(value)
-    }, [])
+    }, [availablePriceRange])
+
+    const resetAll = useCallback(() => {
+        setFilters({
+            ...INITIAL_FILTERS,
+            price: {...availablePriceRange}
+        })
+    }, [availablePriceRange])
+
+    const filterListChange = useCallback((filterType, value, itemIndex) => {
+
+        if(filterType === 'price') {
+            updateFilter(filterType, value)
+        } else {
+            const newFilterList = value.map((item, index) => {
+                if(index === itemIndex) {
+                    return ({...item, isActive: !item.isActive});
+                } else {
+                    return item;
+                }
+            })
+
+            updateFilter(filterType, newFilterList);
+        }
+        
+    }, [updateFilter])
+
+
+
+    const filterProductData = useCallback(( filterList ) => {
+
+        const applyFilter = (products, type, filterConfig) => {
+
+            if (type === 'brand' || type === 'category') {
+                const activeItem = filterConfig[type].filter(item => item.isActive)
+                if(activeItem.length === 0) return products
+
+                return products.filter(product => 
+                    activeItem.some(item => product[type] === item.name)
+                );
+            }
+
+            if (type === 'price') {
+                return products.filter(product => 
+                    product.price >= filterConfig.price.min &&
+                    product.price <= filterConfig.price.max
+                );
+            }
+
+            return products;
+        }        
+        
+        let filteredData = [...originalProduct];
+
+        const filterTypes = ['category', 'brand', 'price']
+
+        filterTypes.forEach(type => {
+            filteredData = applyFilter(filteredData, type, filterList)
+        })
+
+        updateProductData(filteredData)
+
+
+    }, [resetFilter, originalProduct, updateProductData])
+
+    const contextValue = useMemo (() => ({
+        filters,
+        updateFilter,
+        resetFilter,
+        resetAll,
+        filterListChange,
+        filterProductData,
+
+        availablePriceRange,
+
+    }), [filters, availablePriceRange, updateFilter, resetFilter, resetAll, filterListChange, filterProductData]);
 
     return (
-        <CategoryContext.Provider value={{categoryList, updateCategoryFilter}}>
-            <PriceContext.Provider value={{price, updatePriceFilter}}>
-                <BrandContext.Provider value={{brandList, updateBrandFilter}}>
-                    <SortingContext.Provider value={{sortList, updateSortFilter}}>
-                        {children}
-                    </SortingContext.Provider>
-                </BrandContext.Provider>
-            </PriceContext.Provider>
-        </CategoryContext.Provider>
+        <FilterContext.Provider value={contextValue}>
+            {children}
+        </FilterContext.Provider>
+ 
     )
 }
 

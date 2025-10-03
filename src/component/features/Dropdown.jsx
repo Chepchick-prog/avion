@@ -1,5 +1,5 @@
 import { useContext, useState } from "react"
-import { AvionUrlContext } from "./context/ProductContext"
+import { AvionUrlContext } from "../context/ProductContext"
 
 export default function Dropdown ({ type, name, selectedSort, children}) {
 

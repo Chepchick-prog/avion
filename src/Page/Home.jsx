@@ -2,12 +2,12 @@ import { useNavigate } from "react-router-dom";
 import { useContext } from "react";
 import { AvionUrlContext, ProductContext } from "../component/context/ProductContext";
 
-import Button from "../component/Button";
-import Features from "../component/Features";
-import ProductCard from "../component/ProductCard";
-import JoinClubPage from "../component/JoinClubPage";
-import Footer from "../component/Footer";
-import Listings from "../component/Listings";
+import Button from "../component/common/Button";
+import Features from "../component/features/Features";
+import ProductCard from "../component/features/ProductCard";
+import JoinClubPage from "../component/features/JoinClubPage";
+import Footer from "../component/features/Footer";
+import Listings from "../component/features/Listings";
 
 export default function HomePage() {
     return (

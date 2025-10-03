@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import Button from "./Button";
-import { AvionUrlContext } from "./context/ProductContext";
+import Button from "../common/Button";
+import { AvionUrlContext } from "../context/ProductContext";
 
 export default function Features({type}) {
 

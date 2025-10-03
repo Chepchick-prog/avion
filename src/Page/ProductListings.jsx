@@ -1,12 +1,12 @@
-import Footer from "../component/Footer";
-import ProductCard from "../component/ProductCard";
-import Filter from "../component/FIlter";
-import MobFilter from "../component/MobFilter";
+import Footer from "../component/features/Footer";
+import ProductCard from "../component/features/ProductCard";
+import Filter from "../component/features/filter/Filter";
+import MobFilter from "../component/features/MobFilter";
 import { useContext } from "react";
 import { ProductContext } from "../component/context/ProductContext";
 
 
-export default function ProductListingsPage () {
+export default function CatalogListingsPage () {
 
     return (
         <>
@@ -43,7 +43,7 @@ function ProductList () {
                     <ProductCard
                         key={prod.id}
                         id = {prod.id}
-                        type={prod.type === 'Sofas' ? 'big' : ''}
+                        type={prod.category === 'Sofas' ? 'big' : ''}
                         name={prod.name}
                         imgUrl={prod.image}
                         price={prod.price}

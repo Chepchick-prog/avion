@@ -1,5 +1,5 @@
 import { NavLink } from "react-router-dom";
-import Button from "./Button";
+import Button from "../common/Button";
 
 export default function Listings ({children, title}) {
     return (
