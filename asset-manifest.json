@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.css": "/avion/static/css/main.21201faa.css",
-    "main.js": "/avion/static/js/main.dd374f47.js",
+    "main.css": "/avion/static/css/main.66d1879f.css",
+    "main.js": "/avion/static/js/main.b2f97a60.js",
     "static/js/453.0f2284e2.chunk.js": "/avion/static/js/453.0f2284e2.chunk.js",
     "static/media/ProductListings.jpg": "/avion/static/media/ProductListings.6cb30bd7b21b21808a52.jpg",
     "static/media/join-club-img.jpg": "/avion/static/media/join-club-img.daa77d40f6309e02269f.jpg",
     "static/media/Satoshi-Regular.otf": "/avion/static/media/Satoshi-Regular.811ccb0b5af1892a71df.otf",
     "static/media/ClashDisplay-Regular.otf": "/avion/static/media/ClashDisplay-Regular.ccc51e2a3c40ce9bca53.otf",
     "index.html": "/avion/index.html",
-    "main.21201faa.css.map": "/avion/static/css/main.21201faa.css.map",
-    "main.dd374f47.js.map": "/avion/static/js/main.dd374f47.js.map",
+    "main.66d1879f.css.map": "/avion/static/css/main.66d1879f.css.map",
+    "main.b2f97a60.js.map": "/avion/static/js/main.b2f97a60.js.map",
     "453.0f2284e2.chunk.js.map": "/avion/static/js/453.0f2284e2.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.21201faa.css",
-    "static/js/main.dd374f47.js"
+    "static/css/main.66d1879f.css",
+    "static/js/main.b2f97a60.js"
   ]
 }
