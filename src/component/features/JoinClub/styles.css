@@ -1,0 +1,174 @@
+.join-club {
+    padding: 52px 74px 65px 93px;
+
+    background-color: var(--light-gray-color);
+}
+
+.join-club  div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    padding-top: 68px;
+    padding-bottom: 54px;
+
+    background-color: var(--white-color);
+}
+
+.join-club p {
+    max-width: 470px;
+    margin-top: 16px;
+    margin-bottom: 72px;
+}
+
+.join-club-split {
+    display: flex;
+    padding: unset;
+    background-color: var(--white-color);
+}
+
+.join-club-split div {
+    align-items: flex-start;
+    justify-content: space-between;
+
+    padding: 70px 0;
+    padding-left: 72px;
+
+    text-align: start;
+}
+
+.join-club-split-info {
+    padding: 0;
+}
+
+.join-club-split-info div {
+    padding: unset;
+}
+
+.join-club-split-info h1 {
+    font-size: 32px;
+}
+
+.join-club-image {
+    padding: 0;
+    padding-top: 97px;
+    padding-bottom: 86px;
+
+    max-width: 100%;
+    color: var(--white-color);
+    background-image: url(/public/img/join-club-img.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+.join-club-image div {
+    padding: 0;
+    background-color: transparent;
+}
+
+.join-club-image p {
+    margin: unset;
+    margin-top: 12px;
+}
+
+.join-club-benefits {
+    display: flex;
+    gap: 36px;
+
+    margin-top: 30px;
+    margin-bottom: 40px;
+}
+
+.join-club-benefits li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.join-club-benefits img {
+    max-height: 16px;
+}
+
+@media (max-width: 768px) {
+    .join-club {
+        padding: unset;
+    }
+    
+    .join-club div {
+        align-items: center;
+
+        padding: 24px;
+        padding-top: 48px;
+        padding-bottom: 38px;
+
+        text-align: justify;
+    }
+
+    .join-club h1 {
+        font-size: 20px;
+    }
+
+    .join-club p {
+        font-size: 14px;
+        margin-bottom: 64px;
+    }
+
+    .join-club-image h1 {
+        font-size: 24px;
+    }
+
+    .join-club-image p {
+        margin: 0;
+        margin-top: 12px;
+    }
+}
+
+@media (max-width: 490px) {
+
+    .join-club {
+        padding: unset;
+    }
+    
+    .join-club div {
+        align-items: unset;
+
+        padding: 24px;
+        padding-top: 48px;
+        padding-bottom: 38px;
+
+        text-align: justify;
+    }
+
+    .join-club-image div{
+        text-align: left;
+        padding: 24px;
+        padding-bottom: 32px;
+    }
+
+    .join-club-image h1 {
+        max-width: 330px;
+    }
+
+
+    .join-club-image p {
+        max-width: 330px;
+        margin: 0;
+        margin-top: 12px;
+    }
+
+    .join-club-benefits {
+        display: grid;
+        gap: 8px;
+        margin-top: 20px;
+        margin-bottom: 28px;
+    }
+    
+    .join-club-split {
+        display: grid;
+    }
+
+    .join-club-split div {
+        text-align: start;
+    }
+}

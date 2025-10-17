@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 
 import { FilterContext } from "../../context/FilterContext";
 
-import Dropdown from "../Dropdown";
+import Dropdown from "../Dropdown/Dropdown";
 
 function SortingFilter () {
 

@@ -12,7 +12,7 @@ export const productData = [
       depth: 50
     },
     stock: 75,
-    category: "Furniture"
+    category: ["Furniture", 'Chairs']
   },
   {
     id: 2,

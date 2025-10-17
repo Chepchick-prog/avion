@@ -3,6 +3,8 @@ import BrandFilter from "./BrandFilter";
 import PriceFilter from "./PriceFilter";
 import SortingFilter from "./SortingFilter";
 
+import "./styles.css"
+
 function Filter() {
 
     return (

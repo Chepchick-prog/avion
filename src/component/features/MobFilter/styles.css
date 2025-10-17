@@ -1,0 +1,14 @@
+@media (max-width: 768px) {
+    
+    .mobile-product-filter {
+        display: flex;
+        gap: 20px;
+    }   
+}
+
+@media (max-width: 490px) {
+
+    .mobile-product-filter {
+        padding: 8px 24px;
+    }
+}

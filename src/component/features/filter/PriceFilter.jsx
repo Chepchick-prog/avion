@@ -3,9 +3,10 @@ import { useContext } from "react";
 import { FilterContext } from "../../context/FilterContext";
 import { ProductContext } from "../../context/ProductContext";
 
-import Dropdown from "../Dropdown";
-import Button from "../../common/Button";
-import Input from "../../common/Input";
+import Dropdown from "../Dropdown/Dropdown";
+
+import Button from "../../ui/Button/Button";
+import Input from "../../ui/Input/Input";
 
 function PriceFilter () {
 
@@ -41,16 +42,17 @@ function PriceFilter () {
                     </div>
                 </div>
                 <div className="filter-content">
-                    <Button className='filter-btn' name='Cancel' onClick={()=>{resetProductData(); resetFilter(filterType)}}/>
-                    <Button 
-                        className='filter-btn'
-                        type='primary'
-                        name='Done'
+                    <Button className='secondary-btn' onClick={()=>{resetProductData(); resetFilter(filterType)}}>
+                        <span className="body-medium-txt">Cancel</span>
+                    </Button>
+                    <Button className='primary-btn'
                         onClick={() => {
                             resetProductData()
                             filterProductData(filters)
                         }
-                    }/>
+                    }>
+                        <span className="body-medium-txt">Done</span>
+                    </Button>
                 </div>
             </div>
         </Dropdown>

@@ -1,0 +1,37 @@
+.stepper {
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    width: 100%;
+    height: fit-content;
+    max-width: 122px;
+    padding: 12px 16px;
+
+    grid-template-columns: repeat(3, 1fr);
+    background-color: var(--white-color);
+}
+
+.stepper button{
+    padding: unset;
+    width: 100%;
+    color: var(--primary-color);
+}
+
+.stepper button:hover{
+    color: var(--dark-primary-color);
+}
+
+.gray-stepper {
+    background-color: var(--light-gray-color);
+}
+
+@media (max-width: 490px) {
+
+    .stepper {
+        max-width: unset;
+    }
+
+    .baskets-item .stepper {
+        max-width: 122px;
+    }
+}

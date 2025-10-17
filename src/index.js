@@ -4,11 +4,23 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import ProductProvider from './component/context/ProductContext';
+import FilterProvider from './component/context/FilterContext';
+import BusketsProvider from './component/context/BusketsContext';
+
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App />
+    <ProductProvider>
+      <FilterProvider>
+        <BusketsProvider>
+          <App />
+        </BusketsProvider>
+      </FilterProvider>
+    </ProductProvider>
   </React.StrictMode>
+
 );
 
 // If you want to start measuring performance in your app, pass a function

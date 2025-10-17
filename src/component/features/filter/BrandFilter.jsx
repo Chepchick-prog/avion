@@ -3,9 +3,10 @@ import { useContext } from "react";
 import { FilterContext } from "../../context/FilterContext";
 import { ProductContext } from "../../context/ProductContext";
 
-import CheckBox from "../../common/CheckBox";
-import Dropdown from "../Dropdown";
-import Button from "../../common/Button";
+import CheckBox from "../../ui/CheckBox/CheckBox";
+import Button from "../../ui/Button/Button";
+
+import Dropdown from "../Dropdown/Dropdown";
 
 function BrandFilter () {
 
@@ -20,19 +21,21 @@ function BrandFilter () {
         <>
             <Dropdown name={'Brand'}>
                 {filters.brand.map((item, itemIndex) => (
-                    <CheckBox key={itemIndex} name={item.name} isActive={item.isActive} onChange={()=>{filterListChange(filterType, filters.brand, itemIndex)}}/>
+                    <CheckBox key={itemIndex} isActive={item.isActive} onChange={()=>{filterListChange(filterType, filters.brand, itemIndex)}}>{item.name}</CheckBox>
                 ))}
                 <div className="filter-content">
-                    <Button className='filter-btn' name='Cancel' onClick={()=>{resetProductData(); resetFilter(filterType)}}/>
+                    <Button className='secondary-btn' onClick={()=>{resetProductData(); resetFilter(filterType)}}>
+                        <span className="body-medium-txt">Cancel</span>
+                    </Button>
                     <Button 
-                        className='filter-btn'
-                        type='primary'
-                        name='Done'
+                        className='primary-btn'
                         onClick={() => {
                             resetProductData()
                             filterProductData(filters)
                         }
-                    }/>
+                    }>
+                        <span className="body-medium-txt">Done</span>
+                    </Button>
                 </div>
             </Dropdown>    
         </>

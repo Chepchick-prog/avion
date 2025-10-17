@@ -162,11 +162,17 @@ function FilterProvider ({children}) {
         const applyFilter = (products, type, filterConfig) => {
 
             if (type === 'brand' || type === 'category') {
+
                 const activeItem = filterConfig[type].filter(item => item.isActive)
+
                 if(activeItem.length === 0) return products
 
-                return products.filter(product => 
-                    activeItem.some(item => product[type] === item.name)
+                return products.filter(product => {
+
+                    const productValue = Array.isArray(product[type]) ? product[type] : [product[type]]
+
+                    return activeItem.some(item => productValue.includes(item.name))
+                }
                 );
             }
 
@@ -191,7 +197,7 @@ function FilterProvider ({children}) {
         updateProductData(filteredData)
 
 
-    }, [resetFilter, originalProduct, updateProductData])
+    }, [originalProduct, updateProductData])
 
     const contextValue = useMemo (() => ({
         filters,
