@@ -65,12 +65,7 @@ function ProdDetails () {
 
     let product = {}
 
-    prodData.forEach((prod) => {
-
-        if(prod.id === Number(productId.productId)){
-            product = prod
-        } 
-    })
+    product = prodData.find((item) => item.id === Number(productId.productId))
 
     return (
         <section className='prod-details'>

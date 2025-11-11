@@ -59,18 +59,13 @@ function MainContent () {
 function Hero() {
 
     const navigate = useNavigate()
-
-    const handleClick = () => {
-        navigate('/catalog/all-product')
-    }
-
     const avionUrl = useContext(AvionUrlContext);
 
     return (
         <section className='hero hero-container'>
             <div className='hero-right'>
                 <h2>The furniture brand for the future, with timeless designs</h2>
-                <Button className="opaque-btn" onClick={handleClick}>
+                <Button className="opaque-btn" onClick={navigate('/catalog/all-product')}>
                     <span className="body-medium-txt">View collection</span>
                 </Button>
                 <p className='body-large-txt'>A new era in eco friendly furniture with Avelon, the French luxury retail brand with nice fonts, tasteful colors and a beautiful way to display things digitally using modern web technologies.</p>

@@ -54,7 +54,6 @@ function TopNav () {
                     <Button className='nav-btn' onClick={() => navBusket('/buskets')}>
                         <img src={`${avionUrl.avionUrl}/img/icon/Shopping--cart.svg`} alt={`ShoppingCart-icon.svg`}/>
                         {busketsList.length !== 0 && <div className="nav-buskets-counter">{busketsList.length}</div>}
-                        
                     </Button>
                     <Button className='nav-btn'>
                         <img src={`${avionUrl.avionUrl}/img/icon/User--avatar.svg`} alt={`UserAvatar-icon.svg`}/>
